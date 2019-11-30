@@ -22,3 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+two ways to check sql:
+1. rails c
+User.all
+2. psql shoutr_developlment
+select * from User;
