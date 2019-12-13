@@ -15,7 +15,7 @@ class SessionsController < Clearance::SessionsController
   end
 
   def user
-    User.where(email:email_or_username).or(User.where(username: email_or_username)).first || Guest.new
+    User.where(email: email_or_username).or(User.where(username: email_or_username)).first || Guest.new
   end
   def email_or_username
     params[:session][:email_or_username]
