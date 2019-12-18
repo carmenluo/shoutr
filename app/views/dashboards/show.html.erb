@@ -1,11 +1,20 @@
 <h1>Shoutr dashboard</h1>
 
 <%= form_for @shout do |f| %>
+<%= f.hidden_field :content_type, value: "TextShout" %>
 <%= f.fields_for :content do |content_form|  %>
 <%= content_form.text_field :body, placeholder: "shout here", required: true %>
 <% end %>
 
 <%= f.submit "Shout" %>
 <%end %>
+
+<%= form_for @shout do |f| %>
+<%= f.hidden_field :content_type, value: "PhotoShout" %>
+<%= f.fields_for :content do |content_form| %>
+<%= content_form.file_field :image, placeholder: "attach image", required:true, accept: 'image/png, image/jpg, image/gif'%>
+<% end %>
+<%= f.submit "shout" %>
+<% end %>
 
 <%= render @shouts %>

@@ -13,10 +13,16 @@ class ShoutsController < ApplicationController
     {content: content_from_params}
   end
   def content_from_params
-    TextShout.new(content_params)
+    case params[:shout][:content_type]
+    when 'TextShout' then TextShout.new(text_shout_content_params)
+    when 'PhotoShout' then PhotoShout.new(photo_shout_content_params)
+    end
   end
-  def content_params
+  def text_shout_content_params
     params.require(:shout).require(:content).permit(:body)
+  end
+  def photo_shout_content_params
+    params.require(:shout).require(:content).permit(:image)
   end
   def redirect_options_for(shout)
     if shout.persisted?
