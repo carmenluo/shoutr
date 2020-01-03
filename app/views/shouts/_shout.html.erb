@@ -1,4 +1,5 @@
 <div>
+  <%= image_tag(shout.user.avatar.url(:thumb), size: '30')%>
   <%= link_to shout.username, shout.user %>:
   <%= render shout.content %>
   <%= link_to shout do %>
